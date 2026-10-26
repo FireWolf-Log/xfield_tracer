@@ -207,7 +207,7 @@ public:
             int mask;
             vcg::tri::io::ImporterOBJ<TraceMesh>::LoadMask(filename.c_str(),mask);
             int err=vcg::tri::io::ImporterOBJ<TraceMesh>::Open(*this,filename.c_str(),mask);
-            if ((err!=0)&&(err!=5))return false;
+            if (vcg::tri::io::ImporterOBJ<TraceMesh>::ErrorCritical(err))return false;
             return true;
         }
         if (position2!=-1)
